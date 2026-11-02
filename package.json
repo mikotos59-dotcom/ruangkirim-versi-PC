@@ -1,0 +1,51 @@
+{
+  "name": "ruangkirim",
+  "productName": "Ruang Kirim",
+  "version": "0.1.0",
+  "description": "Kirim file PC dan HP lewat WiFi yang sama, terenkripsi ujung ke ujung, dengan izin Terima/Tolak.",
+  "main": "main.js",
+  "author": "SuS_X_x",
+  "license": "MIT",
+  "scripts": {
+    "start": "electron .",
+    "dist": "electron-builder --win nsis zip --x64"
+  },
+  "dependencies": {
+    "qrcode": "^1.5.4"
+  },
+  "devDependencies": {
+    "electron": "^45.0.0",
+    "electron-builder": "^26.15.3"
+  },
+  "build": {
+    "appId": "id.sus.ruangkirim",
+    "productName": "Ruang Kirim",
+    "files": [
+      "main.js",
+      "preload.js",
+      "app/**",
+      "lib/**",
+      "build/icon.png",
+      "package.json"
+    ],
+    "asar": true,
+    "directories": {
+      "output": "dist"
+    },
+    "win": {
+      "target": [
+        "nsis",
+        "zip"
+      ],
+      "icon": "build/icon.ico",
+      "artifactName": "RuangKirim-${version}-win-x64.${ext}"
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": false,
+      "allowToChangeInstallationDirectory": true,
+      "artifactName": "RuangKirim-Setup-${version}.${ext}",
+      "shortcutName": "Ruang Kirim"
+    }
+  }
+}
